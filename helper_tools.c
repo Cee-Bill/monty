@@ -34,12 +34,14 @@ void read_file(char *filename, stack_t **stack)
 }
 
 /**
- * cmp_str - splits strings
- * @buffer: arguments to be tokenized
+ * process_opcode - process monty opcode
+ * @line: contains opcode and arguments
  * @stack: pointer to stack
- * @counter: counts the line number
+ * @counter: Line number in the file
  * Return: pointer of the arrays
  */
 
-void cmp_str(char *buffer, stack_t **stack, int counter)
-{}
+void process_opcode(char *buffer, stack_t **stack, int counter)
+{
+
+}
