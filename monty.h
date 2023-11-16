@@ -44,6 +44,7 @@ typedef struct instruction_s
 /* End Data Struct */
 
 void read_file(char *filename, stack_t **stack);
+char **tokenize(char *input_string);
 void cmp_str(char *buffer, stack_t **stack, int counter);
 
 /* push & pall */
