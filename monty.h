@@ -3,6 +3,11 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include <string.h>
+#include <sys/types.h>
 
 /* Data Structs */
 
@@ -38,11 +43,12 @@ typedef struct instruction_s
 
 /* End Data Struct */
 
-/* push & pall */
+void read_file(char *filename, stack_t **stack);
+void cmp_str(char *buffer, stack_t **stack, int counter);
 
+/* push & pall */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
-
 /* End push & pall */
 
 #endif /* MONTY_H */
