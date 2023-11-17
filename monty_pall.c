@@ -1,10 +1,9 @@
 #include "monty.h"
 
-/* implement push and pall opcode here 
- * void push(stack_t **stack, unsigned int line_number)
- * void pall(stack_t **stack, unsigned int line_number)
- *
- * receive variable from main.c for opcode argument (push or pull) 
+/* pall- opcode pall prints all the values on the stack
+ * starting from the top of the stack. 
+ * @stack_head: node data struct for head stack
+ * @line_number: file number
  */
 
 void pall(stack_t **stack_head, unsigned int line_number)

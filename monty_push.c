@@ -1,10 +1,9 @@
 #include "monty.h"
 
-/* implement push and pall opcode here 
- * void push(stack_t **stack, unsigned int line_number)
- * void pall(stack_t **stack, unsigned int line_number)
- *
- * receive variable from main.c for opcode argument (push or pull) 
+/* push - opcode push pushes an element to the stack 
+ * @stack_head: node data structure for stack
+ * @line_number: monty file line number
+ * Return: void
  */
 
 void push(stack_t **stack_head, unsigned int line_number)
@@ -12,15 +11,15 @@ void push(stack_t **stack_head, unsigned int line_number)
         int tok_data_int;
         stack_t *new_node;
         
-        if (tok_data[1] == NULL)
+        if (tokens[1] == NULL)
         {
-                fprinf(stderr, "L%d: usage: push integer\n", line_number);
+                fprintf(stderr, "L%d: usage: push integer\n", line_number);
                 exit(EXIT_FAILURE);
         }
 
-        tok_data_int = atoi(tok_data[1]);
+        tok_data_int = atoi(tokens[1]);
 
-        new_node = malloc(sizeof(stackt));
+        new_node = malloc(sizeof(stack_t));
         if (new_node == NULL)
         {
                 fprintf(stderr, "Error: Malloc failed\n");
