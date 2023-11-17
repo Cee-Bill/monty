@@ -46,7 +46,8 @@ int num_error;
 void read_file(char *filename, stack_t **stack);
 char **tokenize(char *input_string);
 void process_opcode(char *buffer, stack_t **stack, int counter);
-
+int ver_toks(char **tokens;
+		)
 /* push & pall */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
