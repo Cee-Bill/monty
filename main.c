@@ -1,5 +1,7 @@
 #include "monty.h"
 
+char **tokens;
+
 /**
  * main - program entry point
  * @argc: arguments count
