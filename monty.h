@@ -41,15 +41,19 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-/* End Data Struct */
+int num_error;
 
 void read_file(char *filename, stack_t **stack);
 char **tokenize(char *input_string);
-void cmp_str(char *buffer, stack_t **stack, int counter);
+void process_opcode(char *buffer, stack_t **stack, int counter);
 
 /* push & pall */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
+void monty_swap(stack_t **stack, unsigned int line_number);
+void monty_pint(stack_t **stack, unsigned int line_number);
+void monty_push(stack_t **stack, unsigned int line_number);
+void monty_pop(stack_t **stack, unsigned int line_number);
 /* End push & pall */
 
 #endif /* MONTY_H */

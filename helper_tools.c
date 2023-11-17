@@ -19,12 +19,12 @@ void read_file(char *filename, stack_t **stack)
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
-	while (getline(&buffer, &size, fd) != EOF)
+	while (getline(&buffer, &size, fd) != -1)
 	{
 		if (strcmp(buffer, "\n") != 0)
 		{
 			counter++;
-			comp_str(buffer, stack, counter);
+			process_opcode(buffer, stack, counter);
 		}
 		else if (strcmp(buffer, "\n") == 0)
 			counter++;
@@ -52,7 +52,7 @@ char **tokenize(char *input_string)
 		exit(EXIT_FAILURE);
 	}
 	token = strtok(input_string, " \n\t");
-	if (token = NULL)
+	if (token == NULL)
 	{
 		free(token);
 		return (NULL);
@@ -80,19 +80,19 @@ void process_opcode(char *buffer, stack_t **stack, int counter)
 	int i = 0, unmatched_count = 0;
 
 	instruction_t monty_ops[] = {
-		{"push", monty_push};
-		{"pall", monty_pall};
-		{"pop", monty_pop};
-		{"swap", monty_swap};
-		{"pint", monty_pint};
-		{"nop", monty_nop};
-		{"add", monty_add};
-		{"sub", monty_sub};
-		{NULL, NULL};
+		{"push", monty_push},
+		{"pall", monty_pall},
+		{"pop", monty_pop},
+		{"swap", monty_swap},
+		{"pint", monty_pint},
+		{"nop", monty_nop},
+		{"add", monty_add},
+		{"sub", monty_sub},
+		{NULL, NULL}
 	};
 	tokens = tokenize(buffer);
 
-	while (monty_ops[i].opcode != NULL && tokens[0] != NULL && verify_tokens(tokens) == 1)
+	while (monty_ops[i].opcode != NULL && tokens[0] != NULL && ver_toks(tokens) == 1)
 	{
 		if (strcmp(monty_ops[i].opcode, tokens[0]) == 0)
 		{
@@ -119,7 +119,7 @@ void process_opcode(char *buffer, stack_t **stack, int counter)
 		free(tokens);
 		exit(EXIT_FAILURE);
 	}
-	if ((strcmp("push", tokens[0]) == 0) && (verify_tokens(tokens) == 0))
+	if ((strcmp("push", tokens[0]) == 0) && (ver_toks(tokens) == 0))
 	{
 		fprintf(stderr, "L%d: usage: push integer\n", counter);
 		free(tokens);
