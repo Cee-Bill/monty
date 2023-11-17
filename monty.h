@@ -49,8 +49,8 @@ void process_opcode(char *buffer, stack_t **stack, int counter);
 int ver_toks(char **tokens;
 		)
 /* push & pall */
-void push(stack_t **stack, unsigned int line_number);
-void pall(stack_t **stack, unsigned int line_number);
+void push(stack_t **stack_head, unsigned int line_number);
+void pall(stack_t **stack_head, unsigned int line_number);
 void monty_swap(stack_t **stack, unsigned int line_number);
 void monty_pint(stack_t **stack, unsigned int line_number);
 void monty_push(stack_t **stack, unsigned int line_number);
