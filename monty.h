@@ -62,7 +62,7 @@ void process_opcode(char *buffer, stack_t **stack, int line_number);
 void free_stack(int status, void *ptr);
 void free_buffer(int status, void *ptr);
 void fd_close(int status, void *ptr);
-stack_t *node_add(stack_t **stack, const int num);
+stack_t *node_add(stack_t **stack, const int n);
 
 void monty_push(stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
