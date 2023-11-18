@@ -1,5 +1,5 @@
-#ifndef MONTY_H
-#define MONTY_H
+#ifndef _MONTY_H_
+#define _MONTY_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -41,21 +41,38 @@ typedef struct instruction_s
         void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-int num_error;
+/**
+ * struct var_s - struct to contain the main variables of the Monty interpreter
+ * @queue: find out if in stack vs queue mode
+ * @stack_length: Stack length
+ */
+typedef struct var_s
+{
+        int queue;
+        size_t stack_length;
+} var_t;
 
-void read_file(char *filename, stack_t **stack);
-char **tokenize(char *input_string);
-void process_opcode(char *buffer, stack_t **stack, int counter);
-int ver_toks(char **tokens;
-		)
-/* push & pall */
-void push(stack_t **stack_head, unsigned int line_number);
-void pall(stack_t **stack_head, unsigned int line_number);
+#define STACK 0
+#define QUEUE 1
+
+extern var_t var;
+
+void process_opcode(char *buffer, stack_t **stack, int line_number);
+void free_stack(int status, void *ptr);
+void free_buffer(int status, void *ptr);
+void fd_close(int status, void *ptr);
+
+void monty_push(stack_t **stack, unsigned int line_number);
+void monty_pall(stack_t **stack, unsigned int line_number);
 void monty_swap(stack_t **stack, unsigned int line_number);
 void monty_pint(stack_t **stack, unsigned int line_number);
 void monty_push(stack_t **stack, unsigned int line_number);
 void monty_pop(stack_t **stack, unsigned int line_number);
+void monty_nop(stack_t **stack, unsigned int line_number);
 void monty_sub(stack_t **stack, unsigned int line_number);
-/* End push & pall */
+void monty_add(stack_t **stack, unsigned int line_number);
+void monty_mul(stack_t **stack, unsigned int line_number);
+void monty_div(stack_t **stack, unsigned int line_number);
+void monty_mod(stack_t **stack, unsigned int line_number);
 
-#endif /* MONTY_H */
+#endif
