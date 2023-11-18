@@ -22,7 +22,8 @@ void process_opcode(char *buffer, stack_t **stack, int line_number)
 		{"mul", monty_mul},
 		{"div", monty_div},
 		{"mod", monty_mod},
-		{NULL, NULL}};
+		{NULL, NULL}
+	};
 
 	for (i = 0; monty_ops[i].opcode != NULL; i++)
 	{
