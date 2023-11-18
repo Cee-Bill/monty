@@ -1,13 +1,14 @@
 #include "monty.h"
 
 /**
-  *nop- opcode nop doesn’t do anything
-  *@stack: node struct for stack head
-  *@line_number: line_number
-  *Return: void
- */
-void nop(stack_t **stack, unsigned int counter)
+*monty_nop - opcode nop doesn’t do anything
+*@stack: node struct for stack head
+*@line_number: line_number
+*Return: void
+*/
+
+void monty_nop(stack_t **stack, unsigned int line_number)
 {
-	(void) counter;
-	(void) head;
+	(void) line_number;
+	(void) stack;
 }

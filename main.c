@@ -44,6 +44,6 @@ int main(int argc, char **argv)
 			process_opcode(line, &stack, line_number);
 		}
 	}
-		exit(EXIT_SUCCESS);
+	exit(EXIT_SUCCESS);
 }
-	 
+

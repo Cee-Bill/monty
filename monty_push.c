@@ -1,34 +1,47 @@
 #include "monty.h"
 
-/* push - opcode push pushes an element to the stack 
- * @stack_head: node data structure for stack
+/**
+ * check_digits - ensure a string contains digits only
+ * @arg: string to check
+ * Return: 0 if true | 1 if false
+ */
+
+static int check_digits(char *arg)
+{
+	int i;
+
+	for (i = 0; arg[i]; i++)
+	{
+		if (arg[i] == '-' && i == 0)
+			continue;
+		if (isdigit(arg[i]) == 0)
+			return (1);
+	}
+	return (0);
+}
+
+/**
+ * monty_push - opcode push pushes an element to the stack
+ * @stack: node data structure for stack
  * @line_number: monty file line number
  * Return: void
  */
 
-void push(stack_t **stack_head, unsigned int line_number)
+void monty_push(stack_t **stack, unsigned int line_number)
 {
-        int tok_data_int;
-        stack_t *new_node;
-        
-        if (tokens[1] == NULL)
-        {
-                fprintf(stderr, "L%d: usage: push integer\n", line_number);
-                exit(EXIT_FAILURE);
-        }
+	int num;
+	char *arg;
 
-        tok_data_int = atoi(tokens[1]);
-
-        new_node = malloc(sizeof(stack_t));
-        if (new_node == NULL)
-        {
-                fprintf(stderr, "Error: Malloc failed\n");
-                exit(EXIT_FAILURE);
-        }
-        new_node->n = tok_data_int;
-        new_node->prev = NULL;
-        new_node->next = *stack_head;
-        if (*stack_head != NULL)
-                (*stack_head)->prev = new_node;
-        *stack_head = new_node;
+	arg = strtok(NULL, "\n\t\r");
+	if (arg == NULL || check_digits(arg))
+	{
+		fprintf(stderr, "%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	num = atoi(arg);
+	if (!node_add(stack, num))
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 }
