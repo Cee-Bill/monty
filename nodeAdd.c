@@ -7,7 +7,7 @@
  * @n: value to add to node
  * Return: the new node pointer, NULL otherwise
  */
-stack_t *node_add(stack_t **stack, const int n)
+stack_t *node_add(stack_t **stack, const int num)
 {
 	stack_t *new_node;
 
@@ -16,7 +16,7 @@ stack_t *node_add(stack_t **stack, const int n)
 	new_node = malloc(sizeof(stack_t));
 	if (new_node == NULL)
 		return (NULL);
-	new_node->n = n;
+	new_node->n = num;
 	if (*stack == NULL)
 	{
 		new_node->prev = new_node;

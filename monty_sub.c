@@ -1,3 +1,5 @@
+#include "monty.h"
+
 /**
  * monty_sub - Subtracts top element from the 2nd top in the stack
  * @stack: Pointer to the stack
