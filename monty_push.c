@@ -1,5 +1,5 @@
 #include "monty.h"
-
+#include <ctype.h>
 /**
  * check_digits - ensure a string contains digits only
  * @arg: string to check
@@ -29,7 +29,7 @@ static int check_digits(char *arg)
 
 void monty_push(stack_t **stack, unsigned int line_number)
 {
-	int num;
+	long num;
 	char *arg;
 
 	arg = strtok(NULL, "\n\t\r");
@@ -38,8 +38,9 @@ void monty_push(stack_t **stack, unsigned int line_number)
 		fprintf(stderr, "%u: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
-	num = atoi(arg);
-	if (!node_add(stack, num))
+	/*num = atoi(arg);*/
+	num = strtol(arg, NULL, 10);
+	if (!node_add(stack, (int) num))
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);

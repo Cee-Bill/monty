@@ -22,7 +22,7 @@ void process_opcode(char *buffer, stack_t **stack, int line_number)
 
 	for (i = 0; monty_ops[i].opcode != NULL; i++)
 	{
-		if (strcmp(monty_ops[i].opcode, buffer) == 0)
+		if (strcmp(buffer, monty_ops[i].opcode) == 0 && buffer[strlen(monty_ops[i].opcode)] == '\0')
 		{
 			monty_ops[i].f(stack, line_number);
 			return;
