@@ -1,6 +1,15 @@
 #include "monty.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 var_t var;
+
+void cleanup(void)
+{
+	free_buffer(0, var.buffer);
+	free_stack(0, &var.stack);
+	fd_close(0, var.fd);
+}
 
 /**
  * main - program entry point
@@ -20,6 +29,9 @@ int main(int argc, char **argv)
 
 	var.queue = 0;
 	var.stack_length = 0;
+	var.buffer = NULL;
+	var.stack = NULL;
+	var.fd = NULL;
 
 	if (argc != 2)
 	{
@@ -32,10 +44,12 @@ int main(int argc, char **argv)
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-	on_exit(free_buffer, &buffer);
-	on_exit(free_stack, &stack);
-	on_exit(fd_close, &fd);
-	while (getline(&buffer, &size, fd) != -1)
+	var.fd = fd;
+	/*_exit(free_buffer, &buffer);
+	_exit(free_stack, &stack);
+	_exit(fd_close, &fd); */
+	atexit(cleanup);
+	while (fgets(buffer, size, fd) != NULL)
 	{
 		line_number++;
 		line = (strtok(buffer, "\n\t\r"));

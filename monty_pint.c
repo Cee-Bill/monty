@@ -29,7 +29,7 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 {
 	int swap_value = 0;
 
-	if (*stack == NULL || (*stack)->n == NULL)
+	if (*stack == NULL || (*stack)->n == 0)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

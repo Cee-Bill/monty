@@ -51,6 +51,9 @@ typedef struct var_s
 {
 	int queue;
 	size_t stack_length;
+	char *buffer;
+	stack_t *stack;
+	FILE *fd;
 } var_t;
 
 #define STACK 0
@@ -63,6 +66,7 @@ void free_stack(int status, void *ptr);
 void free_buffer(int status, void *ptr);
 void fd_close(int status, void *ptr);
 stack_t *node_add(stack_t **stack, const int n);
+void cleanup(void);
 
 void monty_push(stack_t **stack, unsigned int line_number);
 void monty_pall(stack_t **stack, unsigned int line_number);
