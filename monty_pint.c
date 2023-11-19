@@ -9,13 +9,15 @@
 
 void monty_pint(stack_t **stack, unsigned int line_number)
 {
-	if (*stack == NULL)
+	stack_t *head = *stack;
+
+	if (var.stack_length == 0)
 	{
-		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+		dprintf(STDOUT_FILENO, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
-		printf("%d\n", (*stack)->n);
+		printf("%d\n", head->n);
 }
 
 /**
