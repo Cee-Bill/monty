@@ -25,7 +25,7 @@ void cleanup(void)
 int main(int argc, char **argv)
 {
 	stack_t *stack = NULL;
-	int line_number = 0;
+	unsigned int line_number = 0;
 	FILE *fd;
 	size_t size = 0;
 	char *buffer = NULL;
