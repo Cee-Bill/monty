@@ -4,7 +4,7 @@
  * node_add - add a node to the top of the stack
  * or end of a queue
  * @stack: Pointer to the array of strings
- * @n: value to add to node
+ * @num: value to add to node
  * Return: the new node pointer, NULL otherwise
  */
 stack_t *node_add(stack_t **stack, const int num)

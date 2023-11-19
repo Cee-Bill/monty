@@ -4,6 +4,10 @@
 
 var_t var;
 
+/**
+ * cleanup - frees allocated memory and close file desc
+ */
+
 void cleanup(void)
 {
 	free_buffer(0, var.buffer);
@@ -45,9 +49,6 @@ int main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	}
 	var.fd = fd;
-	/*_exit(free_buffer, &buffer);
-	_exit(free_stack, &stack);
-	_exit(fd_close, &fd); */
 	atexit(cleanup);
 	while (fgets(buffer, size, fd) != NULL)
 	{

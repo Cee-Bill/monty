@@ -15,8 +15,8 @@ void free_stack(int status, void *ptr)
 	stack = (stack_t **)ptr;
 	if (*stack)
 	{
-		(*stack)->prev->next = NULL;		
-		(*stack)->prev = NULL;		
+		(*stack)->prev->next = NULL;
+		(*stack)->prev = NULL;
 	}
 	while (*stack != NULL)
 	{
