@@ -42,7 +42,6 @@ void monty_swap(stack_t **stack, unsigned int line_number)
 	}
 }
 
-
 /**
  * monty_pop- removes top element from stack
  * @stack: pointer to the stack
