@@ -12,15 +12,13 @@ void monty_pall(stack_t **stack, unsigned int line_number)
 	stack_t *curr_stack;
 
 	(void)line_number;
-	curr_stack = *stack;
-	if (curr_stack == NULL)
+	if (*stack == NULL)
 		return;
-	while (curr_stack != NULL)
+	curr_stack = *stack;
+	do
 	{
 		printf("%d\n", curr_stack->n);
 		curr_stack = curr_stack->next;
-		if (curr_stack == *stack)
-			return;
 	}
-
+	while (curr_stack == *stack);
 }

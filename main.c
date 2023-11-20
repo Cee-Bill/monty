@@ -12,7 +12,7 @@ void cleanup(void)
 {
 	free_buffer(0, var.buffer);
 	free_stack(0, &var.stack);
-	fd_close(0, var.fd);
+	fclose(var.fd);
 }
 
 /**
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 	FILE *fd;
-	size_t size = 0;
+	size_t size = 1024;
 	char *buffer = NULL;
 	char *line = NULL;
 
@@ -50,10 +50,16 @@ int main(int argc, char **argv)
 	}
 	var.fd = fd;
 	atexit(cleanup);
-	while (fgets(buffer, size, fd) != NULL)
+	var.buffer = malloc(size);
+	if (var.buffer == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
+	while (fgets(var.buffer, size, fd) != NULL)
 	{
 		line_number++;
-		line = (strtok(buffer, "\n\t\r"));
+		line = (strtok(var.buffer, "\n\t\r"));
 		if (line != NULL && line[0] != '#')
 		{
 			process_opcode(line, &stack, line_number);
